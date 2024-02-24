@@ -1,3 +1,5 @@
+<?php include_once( get_template_directory() . '/custom/functions.php' );?>
+
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
