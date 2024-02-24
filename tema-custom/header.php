@@ -1,7 +1,8 @@
 <!--
     includo tutti i file dipendenze
  -->
-
+ <?php include_once(get_template_directory() ."/function.php") ?>
+ 
  <?php
     function import_php_files($dir){
         $directory = get_template_directory() . "/" . $dir . "/";
