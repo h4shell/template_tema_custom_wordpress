@@ -1,4 +1,24 @@
-<?php include_once( get_template_directory() . '/custom/functions.php' );?>
+<!--
+    includo tutti i file dipendenze
+ -->
+
+ <?php
+    function import_php_files($dir){
+        $directory = get_template_directory() . "/" . $dir . "/";
+        $files = glob($directory . "*.php");
+        foreach ($files as $file) {
+            if (is_file($file)) {
+                include_once($file);
+            }
+        }
+    }
+ ?>
+
+
+<?php import_php_files("parts"); ?>
+
+ <!-- _________________________________________________________________________--->
+
 
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
