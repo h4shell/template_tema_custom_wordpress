@@ -14,11 +14,14 @@ add_action('wp_enqueue_scripts', 'custom_theme_enqueue_styles');
 
 function custom_add_css()
 {
-    $css_dir = "./wp-content/themes/tema-custom/assets/css";
-    $css_files = scandir($css_dir);
+
+    $css_dir = get_template_directory_uri() . "/assets/css";
+    $css_dir = parse_url($css_dir);
+    $css_files = scandir("." . $css_dir['path']);
     $css_files = array_slice($css_files, 2);
 
     foreach ($css_files as $css_file) {
+        echo $css_file;
         wp_register_style('custom-main-css-' . $css_file, get_template_directory_uri() . '/assets/css/' . $css_file);
         wp_enqueue_style('custom-main-css-' . $css_file);
     }
@@ -29,8 +32,9 @@ add_action('wp_enqueue_scripts', 'custom_add_css');
 function custom_add_js()
 {
 
-    $js_dir = "./wp-content/themes/tema-custom/assets/js";
-    $js_files = scandir($js_dir);
+    $js_dir = get_template_directory_uri() . "/assets/js";
+    $js_dir = parse_url($js_dir);
+    $js_files = scandir("." . $js_dir['path']);
     $js_files = array_slice($js_files, 2);
     foreach ($js_files as $js_file) {
         wp_register_script('custom-main-js-' . $js_file, get_template_directory_uri() . '/assets/js/' . $js_file);
